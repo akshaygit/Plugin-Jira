@@ -1,0 +1,175 @@
+<style>
+	#left{
+	     float:left;
+	}
+	#right{
+	     float:right;
+}
+
+
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+  z-index: 100;
+}
+
+.pop {
+   position: absolute;
+    top: 20%; bottom: 20%; left: 0; right: 0;
+    margin: auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 0px;
+  width: 60%;
+ 
+  /*transition: all 5s ease-in-out; */
+}
+
+.pop h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+.pop .close {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+.pop .close:hover {
+  color: black;
+}
+.pop .content {
+ 
+  margin-bottom: 2%;
+  margin-top:2%;
+  overflow: auto;
+  height:80%;
+ 
+}
+.header{
+ border-bottom:dashed 1px #C0C0C0;
+		font-weight: bold;
+}
+.footer{
+border-top: dashed 1px #C0C0C0;
+	margin-top: 1%;
+	
+}
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .pop{
+    width: 70%;
+  }
+}
+.lineHeight{
+
+line-height: 200%;
+}
+</style>
+<head>
+        <script langauge="javascript">
+            var counter = 0;
+            window.setInterval("refreshDiv()", 2000);
+            function refreshDiv(){
+                counter = counter + 1;
+                document.getElementById("test").innerHTML = document.getElementById("test").innerHTML;
+            }
+        </script>
+    </head>
+
+
+ <div id="test">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">	
+
+<a href="../secure/GitBranchingWeb.jspa?branchName=$branchName&repo=null" target="_blank">Create Branch</a><br/> 
+
+#if($isStory == "Story")
+
+	 #if($count > 0)	
+ 		<span id="left" class="lineHeight"><a  style="cursor: pointer;" data-toggle="modal" data-target="#myModal" href="#rapidView"><span > $count </span> build </a></span>&nbsp;
+ 	
+		  #if($result == "SUCCESS")
+		  <span class="lineHeight">	<i class="fa fa-check-circle lineHeight"></i></span>
+		  #else
+		  <span class="lineHeight">	<i class="fa fa-exclamation-triangle "></i> </span>
+		  #end
+				<span id="right" class="lineHeight">Latest $date</span>
+		<br/>
+		#if($isDeployedToDev)
+<span class="lineHeight"><a href=$deploymentStatus target="_blank" >Deployed </a>to DEV  </span>
+		#end		
+	#end
+#end
+</div>
+<div id="rapidView" class="overlay" >
+	<div class="pop">
+		<div class="header">
+			<span class="bot">$key: $count build |  $projectName</span>
+		</div>
+	
+		<div class="content">
+		
+					<table class="table">
+				    <thead>
+				      <tr>
+				        <th>Plan/Job</th>
+				        <th>Latest Build</th>
+				        <th>Result</th>
+						<th>Date</th>
+						<th>Link</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				      <tr>
+				        <td><a href=$jenkinsUrl/view/Build target="_blank">Build</a></td>
+				        <td>
+				       			 #if($result == "SUCCESS")
+		  							<span class="lineHeight">	<i class="fa fa-check-circle lineHeight"></i></span>
+		 						 #else
+		  							<span class="lineHeight">	<i class="fa fa-exclamation-triangle "></i> </span>
+		  						#end
+				        	<a href=$jenkinsUrl/view/Build/job/Jenkins_MavenProject/$buildNumber  target="_blank">#$buildNumber</a></td>
+				        <td>$passedTestCase test pass out of $totalTestCase</td>
+						<td>$buildDate</td>
+						<td><a href=$repoUrl> artifact link </a></td>
+				      </tr>
+				    </tbody>
+				  </table>
+		</div>
+		
+		<div class="footer">
+			<span>Powered by <a href="http://www.genpact.com">Genpact</a></span>
+			<a class="close" href="#">&times;</a>
+		</div>
+	</div>
+</div>
+
+  
+
+
+ 
+
+   

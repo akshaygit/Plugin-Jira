@@ -1,0 +1,44 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven Bundle Plugin
+Built-By: 703192780
+Build-Jdk: 1.8.0_05
+Atlassian-Build-Date: 2018-05-16T15:01:00+0530
+Atlassian-Plugin-Key: com.genpact.IntelliGEN-Development
+Bnd-LastModified: 1526463063280
+Bundle-Description: Integrate Jira with Jenkins and GitHub. It provide
+  feature in Jira IntelliGEN development panel for creating branch in 
+ GitHub,     It also let you the build status for Jenkins Job.
+Bundle-DocURL: http://www.genpact.com/
+Bundle-ManifestVersion: 2
+Bundle-Name: IntelliGEN Development
+Bundle-SymbolicName: com.genpact.IntelliGEN-Development
+Bundle-Vendor: Genpact
+Bundle-Version: 1.0.0
+Export-Package: com.genpact.jiraplugin.api;version="1.0.0"
+Import-Package: org.springframework.osgi.context;resolution:=optional,
+ org.springframework.osgi.service.exporter.support;resolution:=optiona
+ l,org.springframework.osgi.service.importer.support;resolution:=optio
+ nal,org.eclipse.gemini.blueprint.context;resolution:=optional,org.ecl
+ ipse.gemini.blueprint.service.exporter;resolution:=optional,org.eclip
+ se.gemini.blueprint.service.exporter.support;resolution:=optional,org
+ .eclipse.gemini.blueprint.service.importer.support;resolution:=option
+ al,com.atlassian.jira.exception,com.atlassian.jira.issue,com.atlassia
+ n.jira.issue.issuetype,com.atlassian.jira.ofbiz,com.atlassian.jira.pl
+ ugin.webfragment.contextproviders,com.atlassian.jira.plugin.webfragme
+ nt.model,com.atlassian.jira.project,com.atlassian.jira.user,com.atlas
+ sian.jira.util.json,com.atlassian.jira.web.action,com.atlassian.plugi
+ n.osgi.factory,com.atlassian.sal.api,com.genpact.jiraplugin.api,com.g
+ oogle.common.base,com.google.common.collect,javax.annotation,javax.in
+ ject,javax.servlet.http,org.apache.commons.lang,org.apache.commons.lo
+ gging,org.osgi.framework,org.slf4j,org.springframework.aop.support,or
+ g.springframework.beans,org.springframework.beans.factory,org.springf
+ ramework.beans.factory.annotation,org.springframework.beans.factory.c
+ onfig,org.springframework.beans.factory.parsing,org.springframework.b
+ eans.factory.support,org.springframework.beans.factory.xml,org.spring
+ framework.context.annotation,org.springframework.core.io,org.springfr
+ amework.stereotype,org.springframework.util,org.w3c.dom,webwork.action
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Spring-Context: *
+Tool: Bnd-2.4.1.201501161923
+
